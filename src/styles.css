@@ -1,0 +1,41 @@
+:root {
+  --color-accent: #42b549;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+.color-accent {
+  color: var(--color-accent);
+}
+
+button {
+  padding: 0.5em 1em;
+  background: #42b549;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button.plain {
+  background: #eee;
+  color: #555;
+  border: 1px solid #ccc;
+}
+
+button:hover {
+  background: #42b549bb;
+}
+
+button.plain:hover {
+  background: #f9f9f9;
+  color: #555;
+  border: 1px solid #ccc;
+}

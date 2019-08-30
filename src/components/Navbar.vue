@@ -1,0 +1,77 @@
+<template> 
+  <header :class="classes" :style="style">
+    <FlexContainer
+      style="height:100%"
+      v-if="position === 'top'"
+      alignItems="center"
+    >
+      <router-link :to="'/'" style="margin-right:10px">
+        <FontAwesomeIcon icon="arrow-left" />
+      </router-link>
+      <h1 class="navbar-title">
+        {{ title }}
+      </h1>
+    </FlexContainer>
+    <slot></slot>
+  </header>
+</template>
+
+<script>
+import FlexContainer from '@/components/FlexContainer'
+
+export default {
+  components: {
+    FlexContainer,
+  },
+  props: {
+    title: String,
+    position: {
+      type: String,
+      default: 'top',
+    },
+    paddingless: {
+      type: Boolean,
+      default: false,
+    },
+    back: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        bottom: this.position === 'bottom',
+        navbar: true,
+      }
+    },
+    style() {
+      return {
+        padding: this.paddingless ? '0' : '0 1em',
+      }
+    },
+  },
+}
+
+</script>
+
+<style scoped>
+
+.navbar {
+  height: 50px;
+  box-shadow: 0 1px 8px #ccc;
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 1em;
+}
+
+.bottom {
+  position: absolute;
+  width: calc(100% - 2em);
+  bottom: 0;
+  /* outline: 1px solid #000; */
+}
+
+</style>
