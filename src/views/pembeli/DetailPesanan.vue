@@ -1,5 +1,10 @@
 <template>
-  <TopBarLayout title="Detail Pesanan">
+  <TopBarLayout title="Detail Pesanan" :back="false">
+    <template #nav>
+      <router-link to="/pembeli/pesanan">
+        <FontAwesomeIcon icon="times" />
+      </router-link>
+    </template>
     <FlexContainer class="content" direction="column">
       <div class="qr-code">
       </div>

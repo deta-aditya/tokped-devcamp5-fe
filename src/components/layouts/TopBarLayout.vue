@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar-layout">
-    <Navbar :title="title">
+    <Navbar :title="title" :back="back">
       <slot name="nav"></slot>
     </Navbar>
     <main class="content">
@@ -21,6 +21,10 @@ export default {
       type: String,
       default: 'Untitled'
     },
+    back: {
+      type: Boolean,
+      default: true,
+    }
   },
   computed: {
   }

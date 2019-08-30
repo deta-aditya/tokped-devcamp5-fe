@@ -7,7 +7,7 @@
       justifyContent="space-between"
     >
       <FlexContainer alignItems="center">
-        <FontAwesomeIcon icon="arrow-left" style="margin-right:15px;cursor:pointer" @click="goBack" />
+        <FontAwesomeIcon v-if="back" icon="arrow-left" style="margin-right:15px;cursor:pointer" @click="goBack" />
         <h1 class="navbar-title">
           {{ title }}
         </h1>

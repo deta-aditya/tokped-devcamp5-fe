@@ -9,6 +9,7 @@ import PembeliPesananIndex from './views/pembeli/PesananIndex.vue'
 import MitraTokoku from './views/mitra/Tokoku.vue'
 import MitraDaftarPesanan from './views/mitra/DaftarPesanan.vue'
 import MitraDaftarBarang from './views/mitra/DaftarBarang.vue'
+import MitraScanQrCode from './views/mitra/ScanQrCode.vue'
 
 Vue.use(Router)
 
@@ -68,6 +69,11 @@ export default new Router({
       path: '/mitra/barang',
       name: 'mitra.barang',
       component: MitraDaftarBarang,
+    },
+    {
+      path: '/mitra/scan',
+      name: 'mitra.scan',
+      component: MitraScanQrCode,
     },
   ]
 })

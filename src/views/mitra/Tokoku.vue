@@ -7,6 +7,7 @@
       <FlexContainer justifyContent="space-around">
         <router-link to="/mitra/pesanan">Pesanan</router-link>
         <router-link to="/mitra/barang">Barang</router-link>
+        <router-link to="/mitra/scan">Scan QR Code</router-link>
       </FlexContainer>
     </FlexContainer>
   </BlankLayout>
