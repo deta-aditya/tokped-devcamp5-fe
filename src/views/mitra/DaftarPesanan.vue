@@ -57,6 +57,7 @@
         :order="order"
         @change="loadTransactions"
         @detail="selectOrderId"
+        :user="false"
       />
     </div>
   </TopBarLayout>

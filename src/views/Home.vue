@@ -9,12 +9,18 @@
       <img src="@/assets/tokopedia.jpeg" width="100">
       <p>Feature Demonstration</p>
 
-      <FlexContainer style="padding:0 1em">
+      <FlexContainer style="width:90%" justifyContent="space-around">
         <router-link to="/pembeli" class="act">
-          <Card>Act as Buyer (Pembeli)</Card>
+          <Card :padding="20">
+            <FontAwesomeIcon icon="shopping-basket" size="3x" style="width:100%;margin-bottom:0.2em" />
+            <span>Act as Buyer (Pembeli)</span>
+          </Card>
         </router-link>
         <router-link to="/mitra" class="act">
-          <Card>Act as Seller (Mitra)</Card>
+          <Card :padding="20">
+            <FontAwesomeIcon icon="user" size="3x" style="width:100%;margin-bottom:0.2em" />
+            <span>Act as Seller (Mitra)</span>
+          </Card>
         </router-link>
       </FlexContainer>
     </FlexContainer>
@@ -45,11 +51,21 @@ export default {
 .act {
   color: #42b549;
   text-decoration: none;
-  flex: 1;
+  width: 40vw;
+  /* flex: 1; */
 }
 
-.act:first-child {
-  margin-right:5px; 
+.act .card {
+  color: #fff;
+  text-align: center;
+}
+
+.act:first-child .card {
+  background: linear-gradient(25deg, #42b549, #e2d34b)
+}
+
+.act:last-child .card {
+  background: linear-gradient(25deg, #e68d27, #f37454)
 }
 
 /* .home {

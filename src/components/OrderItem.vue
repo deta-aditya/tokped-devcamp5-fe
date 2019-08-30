@@ -3,8 +3,11 @@
     <p class="order-status">{{ order.statusText }}</p>
     <div class="order-head">
       <h3 class="order-user">{{ order.name }}</h3>
-      <p class="order-ordered-at">{{ order.ordered_at }}</p>
       <strong class="order-id">TR NO.{{ order.id }}</strong>
+      <p class="order-ordered-at">{{ order.ordered_at }}</p>
+      <p v-if="order.status === 'canceled'" class="order-ordered-at color-accent">
+        Alasan Pembatalan: {{ order.notes }}
+      </p>
     </div>
     <FlexContainer class="order-body" justifyContent="right" alignItems="center">
       <button class="plain" type="button" @click="showDetail">Detail</button>
@@ -12,7 +15,7 @@
         :status="order.status" 
         :id="order.id" 
         @done="handleStateChangeDone"
-        user
+        :user="user"
       />
     </FlexContainer>
   </Card>
