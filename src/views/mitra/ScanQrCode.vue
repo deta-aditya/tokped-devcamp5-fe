@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     onDecode(decodedString) {
-      console.log(decodedString)
+      alert(decodedString)
     }
   }
 }
