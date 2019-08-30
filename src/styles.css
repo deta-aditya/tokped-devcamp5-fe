@@ -39,3 +39,7 @@ button.plain:hover {
   color: #555;
   border: 1px solid #ccc;
 }
+
+a {
+  color: #000;
+}

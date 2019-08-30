@@ -8,10 +8,11 @@
     </div>
     <FlexContainer class="order-body" justifyContent="right" alignItems="center">
       <button class="plain" type="button" @click="showDetail">Detail</button>
-      <NextOrderStateButton 
+      <NextOrderStateButton
         :status="order.status" 
         :id="order.id" 
         @done="handleStateChangeDone"
+        user
       />
     </FlexContainer>
   </Card>
@@ -30,6 +31,10 @@ export default {
   },
   props: {
     order: Object,
+    user: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     handleStateChangeDone(newStatus) {

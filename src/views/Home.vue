@@ -10,7 +10,7 @@
       <p>Feature Demonstration</p>
 
       <FlexContainer style="padding:0 1em">
-        <router-link to="/mitra" class="act">
+        <router-link to="/pembeli" class="act">
           <Card>Act as Buyer (Pembeli)</Card>
         </router-link>
         <router-link to="/mitra" class="act">

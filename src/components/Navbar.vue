@@ -4,15 +4,17 @@
       style="height:100%"
       v-if="position === 'top'"
       alignItems="center"
+      justifyContent="space-between"
     >
-      <router-link :to="'/'" style="margin-right:10px">
-        <FontAwesomeIcon icon="arrow-left" />
-      </router-link>
-      <h1 class="navbar-title">
-        {{ title }}
-      </h1>
+      <FlexContainer alignItems="center">
+        <FontAwesomeIcon icon="arrow-left" style="margin-right:15px;cursor:pointer" @click="goBack" />
+        <h1 class="navbar-title">
+          {{ title }}
+        </h1>
+      </FlexContainer>
+      <slot></slot>
     </FlexContainer>
-    <slot></slot>
+    <slot v-else></slot>
   </header>
 </template>
 
@@ -50,6 +52,11 @@ export default {
         padding: this.paddingless ? '0' : '0 1em',
       }
     },
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1)
+    }
   },
 }
 

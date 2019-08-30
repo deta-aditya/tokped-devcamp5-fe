@@ -27,6 +27,18 @@ const getTransactionDetails = (id) =>
 const getStoreProducts = (id) =>
   request('get', `/store/${id}/product`)
 
+const getStores = () =>
+  request('get', '/store')
+
+const getUserById = (id) =>
+  request('get', `/user/${id}`)
+
+const order = (payload) =>
+  request('post', '/order', payload)
+
+const getUserTransactions = (id) => 
+  request('get', `/user/${id}/trx`)
+
 export {
   getStoreById,
   getStoreTransactions,
@@ -34,4 +46,8 @@ export {
   cancelOrder,
   getTransactionDetails,
   getStoreProducts,
+  getStores,
+  getUserById,
+  order,
+  getUserTransactions,
 }

@@ -1,5 +1,8 @@
 <template>
-  <FlexContainer v-if="status === 'pending'">
+  <button class="plain" v-if="user && status === 'pending'" style="margin:0 0 0 5px" @click="cancel">
+    Batalkan
+  </button>
+  <FlexContainer v-else-if="status === 'pending'">
     <button @click="process('confirmed')" style="margin:0 5px">
       Konfrimasi
     </button>
@@ -31,6 +34,10 @@ export default {
     status: {
       type: String,
       required: true,
+    },
+    user: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

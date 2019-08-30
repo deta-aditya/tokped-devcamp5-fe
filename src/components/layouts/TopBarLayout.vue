@@ -1,6 +1,8 @@
 <template>
   <div class="top-bar-layout">
-    <Navbar :title="title" />
+    <Navbar :title="title">
+      <slot name="nav"></slot>
+    </Navbar>
     <main class="content">
       <slot></slot>
     </main>
