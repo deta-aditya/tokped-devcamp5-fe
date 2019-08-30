@@ -8,7 +8,7 @@ const colors = {
   accent: '#42b549',
 }
 
-const api = 'https://5b4e361b.ngrok.io/api'
+const api = 'https://workrelic.dhendykur.me/api'
 
 const statuses = {
   all: 'Semua',
