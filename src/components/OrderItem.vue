@@ -22,6 +22,7 @@
 import Card from '@/components/Card'
 import NextOrderStateButton from '@/components/NextOrderStateButton'
 import FlexContainer from '@/components/FlexContainer'
+import { statuses } from '@/config'
 
 export default {
   components: {
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     handleStateChangeDone(newStatus) {
-      alert(`Status changed to ${newStatus}!`)
+      alert(`Pesanan ${order.id} telah berubah menjadi ${stasuses[newStatus]}!`)
       this.$emit('change')
     },
     showDetail() {

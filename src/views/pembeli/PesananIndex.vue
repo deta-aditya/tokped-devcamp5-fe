@@ -1,5 +1,10 @@
 <template>
-  <TopBarLayout title="Daftar Pesanan">
+  <TopBarLayout title="Riwayat Pemesanan" :back="false">
+    <template #nav>
+      <router-link to="/pembeli">
+        <FontAwesomeIcon icon="times" />
+      </router-link>
+    </template>
     <div class="content">
       <FlexContainer class="status-list">
         <Card

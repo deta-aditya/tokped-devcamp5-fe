@@ -5,21 +5,29 @@
         <FontAwesomeIcon icon="history" />
       </router-link>
     </template>
-    <FlexContainer class="content">
-      <Card
-        v-for="store in stores"
-        :key="store.id"
-        class="store-item"
-        :padding="0"
-      >
-        <div @click="selectStore(store.id)">
-          <img :src="store.img_header" :alt="store.name">
-          <div style="padding:0.7em">
-            <h2>{{ store.name }}</h2>
-          </div>
-        </div>
+    <div class="content">
+      <Card class="user-info">
+        <FlexContainer justifyContent="space-between">
+          <strong>{{ user.name }}</strong>
+          <span>Rp{{ user.balance }}</span>
+        </FlexContainer>
       </Card>
-    </FlexContainer>
+      <FlexContainer>
+        <Card
+          v-for="store in stores"
+          :key="store.id"
+          class="store-item"
+          :padding="0"
+        >
+          <div @click="selectStore(store.id)">
+            <img :src="store.img_header" :alt="store.name">
+            <div style="padding:0.7em">
+              <h2>{{ store.name }}</h2>
+            </div>
+          </div>
+        </Card>
+      </FlexContainer>
+    </div>
   </TopBarLayout>
 </template>
 
@@ -27,7 +35,7 @@
 import TopBarLayout from '@/components/layouts/TopBarLayout'
 import FlexContainer from '@/components/FlexContainer'
 import Card from '@/components/Card'
-import { getStores } from '@/api'
+import { getStores, getUserById } from '@/api'
 
 export default {
   components: {
@@ -38,10 +46,12 @@ export default {
 
   data: () => ({
     stores: [],
+    user: {},
   }),
 
-  async created() {
-    this.stores = await getStores()
+  created() {
+    getStores().then(stores => this.stores = stores)
+    getUserById(1).then(user => this.user = user)
   },
 
   methods: {
@@ -75,5 +85,15 @@ export default {
 .store-item h2 {
   margin: 0;
   font-size: 1.125em;
+}
+
+.user-info {
+  margin-bottom: 1em;
+  color: #fff;
+  background: linear-gradient(#20a049, #67ac40)
+}
+
+.user-info p {
+  margin: 0;
 }
 </style>

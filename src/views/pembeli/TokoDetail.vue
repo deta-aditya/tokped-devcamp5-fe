@@ -31,6 +31,10 @@
             </div>
           </FlexContainer>
         </Card>
+        <FlexContainer justifyContent="space-between" class="subtotal">
+          <strong>Subtotal:</strong>
+          <strong>Rp{{ totalPrice }}</strong>
+        </FlexContainer>
       </div>
       <button type="button" class="order-button" @click="checkout">Pesan</button>
     </FlexContainer>
@@ -60,6 +64,13 @@ export default {
       this.products = products
       this.cart = products.map(product => ({ ...product, qty: 0 }))
     })
+  },
+  computed: {
+    totalPrice() {
+      return this.cart.reduce(
+        (acc, item) => acc + (item.qty * item.price)
+      , 0)
+    }
   },
   methods: {
     incrementQty(index) {
@@ -146,6 +157,10 @@ export default {
 
 .qty-counter {
   margin-top: 1em;
+}
+
+.subtotal {
+  padding: 0.8em 0;
 }
 
 </style>

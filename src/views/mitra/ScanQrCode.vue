@@ -16,16 +16,16 @@ export default {
     onDecode(decodedString) {
       const decodedId = Number(decodedString)
       if (isNaN(decodedId)) {
-        return
+        return alert('QR Code tidak diketahui')
       }
 
       this.process(decodedId, 'done')
+        .then(() => alert(`Pesanan No. ${decodedId} berhasil diselesaikan!`))
         .then(() => this.$router.push('/mitra/pesanan'))
     },
 
     async process(id, status) {
       await updateOrderStatus(id, status)
-
     },
   }
 }

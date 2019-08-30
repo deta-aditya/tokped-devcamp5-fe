@@ -49,7 +49,7 @@ export default {
       const notes = prompt('Tuliskan catatan pembatalan')
 
       if (notes !== null) {
-        await cancelOrder(this.id, notes, 1)
+        await cancelOrder(this.id, notes, this.user ? 2 : 1)
         this.$emit('done', 'canceled')
       }
     }

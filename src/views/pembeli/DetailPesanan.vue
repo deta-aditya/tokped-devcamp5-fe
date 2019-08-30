@@ -47,7 +47,7 @@
           </tr>
         </tbody>
       </table>
-      <button type="button" class="plain" @click="order">Batalkan</button>
+      <button v-if="order.status === 'pending'" type="button" class="plain" @click="cancel">Batalkan</button>
     </FlexContainer>
   </TopBarLayout>
 </template>
@@ -56,7 +56,7 @@
 import QrCode from 'qrcode'
 import TopBarLayout from '@/components/layouts/TopBarLayout'
 import FlexContainer from '@/components/FlexContainer'
-import { getTransactionDetails } from '@/api'
+import { getTransactionDetails, cancelOrder } from '@/api'
 import { statuses } from '@/config'
 
 export default {
@@ -86,7 +86,15 @@ export default {
       QrCode.toCanvas(this.$refs.qrCode, this.$route.params.id, 
         (err) => err ? console.error(err) : null
       )
-    }
+    },
+    async cancel() {
+      const notes = prompt('Tuliskan catatan pembatalan')
+
+      if (notes !== null) {
+        await cancelOrder(this.$route.params.id, notes, 2)
+        this.order = await getTransactionDetails(this.$route.params.id)
+      }
+    },
   }
 }
 </script>
