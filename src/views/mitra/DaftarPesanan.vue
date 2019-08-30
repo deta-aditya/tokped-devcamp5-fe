@@ -1,5 +1,10 @@
 <template>
   <TopBarLayout title="Daftar Pesanan">
+    <template #nav>
+      <router-link to="/mitra/scan">
+        <FontAwesomeIcon icon="qrcode" />
+      </router-link>
+    </template>
     <div class="dialog-detail" v-show="showDetail" @click="closeDetailModal">
       <FlexContainer 
         class="dialog-box-container" 

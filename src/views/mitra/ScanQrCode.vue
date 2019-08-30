@@ -6,6 +6,7 @@
 
 <script>
 import TopBarLayout from '@/components/layouts/TopBarLayout'
+import { updateOrderStatus } from '@/api'
 
 export default {
   components: {
@@ -13,8 +14,19 @@ export default {
   },
   methods: {
     onDecode(decodedString) {
-      alert(decodedString)
-    }
+      const decodedId = Number(decodedString)
+      if (isNaN(decodedId)) {
+        return
+      }
+
+      this.process(decodedId, 'done')
+        .then(() => this.$router.push('/mitra/pesanan'))
+    },
+
+    async process(id, status) {
+      await updateOrderStatus(id, status)
+
+    },
   }
 }
 </script>
