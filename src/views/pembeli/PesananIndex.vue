@@ -1,39 +1,5 @@
 <template>
   <TopBarLayout title="Daftar Pesanan">
-    <div class="dialog-detail" v-show="showDetail" @click="closeDetailModal">
-      <FlexContainer 
-        class="dialog-box-container" 
-        justifyContent="center"
-        alignItems="flex-start"
-      >
-        <div class="dialog-box" @click.stop>
-          <FlexContainer 
-            justifyContent="space-between">
-            <h2 class="dialog-title">Detail Pesanan</h2>
-            <a href="#" @click.prevent="closeDetailModal">
-              <FontAwesomeIcon icon="times" />
-            </a>
-          </FlexContainer>
-          <p class="total-price">Total: Rp{{ totalPrice }}</p>
-          <Card
-            v-for="(detail, idx) in details"
-            :key="idx"
-            class="detail-item"
-          >
-            <h3 class="detail-title">{{ detail.name }}</h3>
-            <p class="detail-price">
-              Rp{{ detail.price }} 
-              &times;
-              {{ detail.qty }}
-              =
-              <strong class="detail-price-total">
-                Rp{{ detail.price * detail.qty }}
-              </strong>
-            </p>
-          </Card>
-        </div>
-      </FlexContainer>
-    </div>
     <div class="content">
       <FlexContainer class="status-list">
         <Card
@@ -104,9 +70,8 @@ export default {
       this.orders = await getUserTransactions(1)
     },
 
-    async selectOrderId(id) {
-      this.selectedOrderId = id
-      this.details = (await getTransactionDetails(id)).products
+    selectOrderId(id) {
+      this.$router.push(`/pembeli/pesanan/${id}`)
     },
 
     closeDetailModal() {

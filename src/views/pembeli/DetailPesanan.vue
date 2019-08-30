@@ -5,9 +5,9 @@
         <FontAwesomeIcon icon="times" />
       </router-link>
     </template>
-    <FlexContainer class="content" direction="column">
-      <div class="qr-code">
-      </div>
+    <FlexContainer class="content" direction="column" alignItems="center">
+      <canvas class="qr-code" ref="qrCode">
+      </canvas>
       <table>
         <tbody>
           <tr>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import QrCode from 'qrcode'
 import TopBarLayout from '@/components/layouts/TopBarLayout'
 import FlexContainer from '@/components/FlexContainer'
 import { getTransactionDetails } from '@/api'
@@ -71,6 +72,7 @@ export default {
   }),
   async created() {
     this.order = await getTransactionDetails(this.$route.params.id)
+    this.generateQrCode()
   },
   computed: {
     productTotal() {
@@ -79,6 +81,13 @@ export default {
       , 0)
     }
   },
+  methods: {
+    generateQrCode() {
+      QrCode.toCanvas(this.$refs.qrCode, this.$route.params.id, 
+        (err) => err ? console.error(err) : null
+      )
+    }
+  }
 }
 </script>
 
@@ -102,8 +111,6 @@ th {
 }
 
 .qr-code {
-  height: 300px;
-  border: 1px solid #000;
   margin-bottom: 1em;
 }
 </style>
