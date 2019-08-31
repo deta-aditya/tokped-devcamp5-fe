@@ -6,7 +6,7 @@
       </router-link>
     </template>
     <FlexContainer class="content" direction="column" alignItems="center">
-      <canvas v-if="order.status === 'ready'" class="qr-code" ref="qrCode">
+      <canvas v-show="order.status === 'ready'" class="qr-code" ref="qrCode">
       </canvas>
       <table>
         <tbody>

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     handleStateChangeDone(newStatus) {
-      alert(`Pesanan ${this.order.id} telah berubah menjadi ${stasuses[newStatus]}!`)
+      alert(`Pesanan ${this.order.id} telah berubah menjadi ${statuses[newStatus]}!`)
       this.$emit('change')
     },
     showDetail() {
